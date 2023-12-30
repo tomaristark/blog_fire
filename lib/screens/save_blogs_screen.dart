@@ -13,59 +13,77 @@ class SaveBlogsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 4,
-        child: Scaffold(
-            body: NestedScrollView(
-          headerSliverBuilder: ((context, innerBoxIsScrolled) => [
-                SliverAppBar.medium(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(kYourLibrary),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.green)),
-                          onPressed: () {},
-                          child: const Text(kNewList))
-                    ],
+        child: SafeArea(
+          child: Scaffold(
+            extendBodyBehindAppBar: false,
+              body: NestedScrollView(
+            headerSliverBuilder: ((context, innerBoxIsScrolled) => [
+                  SliverAppBar.medium(
+                    
+                
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(kYourLibrary),
+                        ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.green)),
+                            onPressed: () {},
+                            child: const Text(kNewList))
+                      ],
+                    ),
+                    centerTitle: false,
+                    titleTextStyle: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: kFS25x),
+                    pinned: false,
+                  
                   ),
-                  centerTitle: false,
-                  titleTextStyle: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: kFS25x),
-                  pinned: false,
-                ),
-                SliverPersistentHeader(
-                  delegate: _silverPersistentTabBar(
-                     TabBar(
-                        indicatorPadding: EdgeInsets.zero,
-                        labelPadding: EdgeInsets.zero,
-                        padding: EdgeInsets.zero,
-                        tabs: saveBlogScreenTabList.map((e) => Tab(text: e,)).toList(),
-                        ),
+                  SliverPersistentHeader(
+                    delegate: _silverPersistentTabBar(
+                       TabBar(
+                          
+                          indicatorPadding: EdgeInsets.zero,
+                          labelPadding: EdgeInsets.zero,
+                          padding: EdgeInsets.zero,
+                          tabs: saveBlogScreenTabList.map((e) => Tab(text: e,)).toList(),
+                          
+                          ),
+                      
+                      Theme.of(context).appBarTheme.backgroundColor
+                    ),
+                    pinned: true,
+                    floating: true,
                   ),
-                  pinned: true,
-                ),
-              ]),
-          body: TabBarView(children: [
-            ReadingListView(),
-            Text("data"),
-            Text("data"),
-            Text("data"),
-          ]),
-        )));
+                ]),
+            body: TabBarView(children: [
+              ReadingListView(),
+              Text("data"),
+              Text("data"),
+              Text("data"),
+            ]),
+          ),
+         
+          ),
+        ));
   }
 }
 
 class _silverPersistentTabBar extends SliverPersistentHeaderDelegate {
   final TabBar tabBar;
+  final Color ? color;
+ 
 
-  _silverPersistentTabBar(this.tabBar);
+  _silverPersistentTabBar(this.tabBar,this.color);
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return tabBar;
+    return Material(
+      elevation: 5,
+      color: color,
+      child: tabBar);
   }
 
   @override
@@ -87,14 +105,17 @@ class ReadingListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: kSP20x, horizontal: kSP20x),
-            child: ReadingListWidget(),
-          );
-        });
+    return SizedBox(
+      height: 400,
+      child: ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: kSP20x, horizontal: kSP20x),
+              child: ReadingListWidget(),
+            );
+          }),
+    );
   }
 }

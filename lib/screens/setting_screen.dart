@@ -1,6 +1,10 @@
 import 'package:blog_fire/resource/dimens.dart';
 import 'package:blog_fire/resource/string.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+
+import '../resource/enums.dart';
 
 
 class SettingScreen extends StatelessWidget {
@@ -9,7 +13,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      // backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(kSettings),
         elevation: 0,
@@ -40,9 +44,12 @@ class SettingScreen extends StatelessWidget {
           },
           ),
           SettingsWidget(text: kTheme,
+          
           trailing: Text("Light",
-          style: const TextStyle(decoration: TextDecoration.underline,fontSize: 14,color: Colors.black),),
-          onTap: (){},),
+          style: TextStyle(decoration: TextDecoration.underline,fontSize: 14,color: Theme.of(context).colorScheme.secondary),),
+          onTap: (){
+            showThemeDialog(context);
+          },),
           SettingsWidget(text: kPushNotifications,
           onTap: (){},),
           SettingsWidget(text: kEmailNotification,
@@ -72,6 +79,30 @@ class SettingScreen extends StatelessWidget {
       ),
     );
   }
+
+void showThemeDialog(BuildContext context) =>showDialog(context: context, 
+   builder: (context)=> SimpleDialog(
+    children: [
+      ListTile(
+        title: Text(ThemeOptions.light.name),
+        onTap: (){
+          Get.changeThemeMode(ThemeMode.light);
+          Navigator.pop(context);
+        },
+        ),
+      ListTile(title: Text(ThemeOptions.dark.name),
+      onTap: (){
+          Get.changeThemeMode(ThemeMode.dark);
+          Navigator.pop(context);
+      },),
+      ListTile(title: Text(ThemeOptions.system.name),
+      onTap: (){
+        Get.changeThemeMode(ThemeMode.system);
+        Navigator.pop(context);
+      }),
+    ],
+   )
+   );
   
 }
 
@@ -84,9 +115,9 @@ class SettingHeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 30,bottom: 20,left: 20),
-      child: Text(text,style:const  TextStyle(
+      child: Text(text,style:  TextStyle(
         fontSize: 18,
-        color: Colors.grey,
+        color:Theme.of(context).colorScheme.onSecondary,
         fontWeight: FontWeight.w500
       ),),
     );
@@ -111,7 +142,7 @@ final Widget ? leading;
           width: 0.04
         )
       ),
-      tileColor: Colors.white,
+      tileColor: Theme.of(context).colorScheme.onPrimary,
       title: Text(text,),
       trailing: trailing,
       contentPadding: EdgeInsets.symmetric(horizontal: 20),

@@ -1,7 +1,9 @@
+import 'package:blog_fire/resource/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_fire/screens/profile_screen.dart';
 import 'package:blog_fire/screens/save_blogs_screen.dart';
 import 'package:blog_fire/screens/search_screen.dart';
+import 'package:get/get.dart';
 
 
 import 'screens/home_screen.dart';
@@ -28,22 +30,16 @@ class _MyAppState extends State<MyApp> {
   ];
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
-      ),
+    return GetMaterialApp(
+      
+      themeMode:ThemeMode.system ,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      
       home: Scaffold(
         body: screens[_index],
         
-        bottomNavigationBar: NavigationBarTheme(
-          data: const NavigationBarThemeData(
-            surfaceTintColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            indicatorColor: Colors.transparent
-          ),
-          child: NavigationBar(
+        bottomNavigationBar: NavigationBar(
             labelBehavior:NavigationDestinationLabelBehavior.alwaysHide,
             selectedIndex: _index,
             onDestinationSelected: (index)=> setState(() {
@@ -67,7 +63,7 @@ class _MyAppState extends State<MyApp> {
                 icon: Icon(Icons.account_circle_outlined), 
                 label: "Profile"),
             ],
-          ),
+          
         ),
       
       floatingActionButton: (_index == 0 || _index == 1)?FloatingActionButton(

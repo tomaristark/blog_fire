@@ -112,7 +112,7 @@ class TrendingBlogs extends StatelessWidget {
   Widget build(BuildContext context) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: const  Row(
+        child:   Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -123,7 +123,7 @@ class TrendingBlogs extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
-                  color: Colors.black12
+                  color: Theme.of(context).colorScheme.secondary
                 ),
                 ),
               )),
@@ -177,8 +177,8 @@ class StaffPicksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: kSP20x),
-      color: Colors.black,
+      padding: const EdgeInsets.symmetric(vertical: kSP20x),
+      color: Theme.of(context).colorScheme.secondary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -316,7 +316,7 @@ class TopicView extends StatelessWidget {
             alignment: Alignment.center,
             padding:const  EdgeInsets.symmetric(horizontal: kSP10x,vertical: kSP5x),
             decoration: BoxDecoration(
-              color: Colors.black12,
+              color: Theme.of(context).colorScheme.onSecondary,
               borderRadius: BorderRadius.circular(kSP20x),
             ),
             child: Text("DevOps"),

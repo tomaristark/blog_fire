@@ -17,10 +17,12 @@ class HomeScreen extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*0.12), 
           child: AppBar(
+            elevation: 0,
             // backgroundColor: Colors.red,
             title: const Padding(
               padding:  EdgeInsets.only(left: kSP15x,top: kSP20x),
               child: Text(kHome,style: TextStyle(
+    
                 fontSize: kFS25x,
                 fontWeight: FontWeight.bold
               ),),
@@ -44,6 +46,7 @@ class HomeScreen extends StatelessWidget {
                     icon: const Icon(Icons.add)),
                   Expanded(
                     child: TabBar(
+                      tabAlignment: TabAlignment.start,
                       padding: EdgeInsets.zero,
                       isScrollable: true,
                       indicatorSize: TabBarIndicatorSize.label,

@@ -1,6 +1,4 @@
 
-
-
 import 'package:blog_fire/resource/dimens.dart';
 import 'package:blog_fire/resource/static_list.dart';
 import 'package:blog_fire/resource/string.dart';
@@ -16,10 +14,13 @@ class ProfileScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        extendBodyBehindAppBar: false,
         body: NestedScrollView(
-          
           headerSliverBuilder: (context, innerBoxIsScrolled) =>[
             SliverAppBar(
+              forceMaterialTransparency: false,
+              elevation: 5,
+              
               title: (innerBoxIsScrolled)?const Text("Hein Htet Zaw",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),):null,
               pinned: true,
               expandedHeight: kSP250x,
@@ -115,6 +116,7 @@ class ProfileView extends StatelessWidget {
                   ),
                   ),
                   Chip(
+                    color: MaterialStatePropertyAll(Colors.transparent),
                   padding: const EdgeInsets.symmetric(horizontal: 18,vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(kSP20x),
@@ -122,7 +124,7 @@ class ProfileView extends StatelessWidget {
                   ),
                   label: const Text(kEditYourProfile),
                   labelStyle: const TextStyle(
-                    color: Colors.black,
+                   
                     fontSize: kSP18x
                   ),
                   ),
@@ -156,44 +158,52 @@ void _selectCallBack(String ? value){
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-         Padding(
-            padding: const EdgeInsets.symmetric(vertical: kSP20x,horizontal: kSP10x),
-            child: Container(
-      alignment: Alignment.center,
-      width: double.infinity,
-      height: kSP40x,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        borderRadius: BorderRadius.circular(kSP30x)
-      ),
-      child: DropdownButton(
-        padding:const  EdgeInsets.symmetric(horizontal: kSP20x),
-        underline: const SizedBox.shrink(),
-        isExpanded: true,
-        value: _selectedValue,
-        items: items.map((e) => DropdownMenuItem(value: e,child: Text(e))).toList(), 
-        onChanged: _selectCallBack,
-        ),
-      
-    ),
+    return 
+     SafeArea(
+       child: Padding(
+         padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1),
+         child: Column(
+            children: [
+             Padding(
+                padding: const EdgeInsets.symmetric(vertical: kSP20x,horizontal: kSP10x),
+                child: Container(
+          alignment: Alignment.center,
+          width: double.infinity,
+          height: kSP40x,
+          decoration: BoxDecoration(
+            border: Border.all(color: Theme.of(context).colorScheme.secondary),
+            borderRadius: BorderRadius.circular(kSP30x)
           ),
-          Expanded(
-            child: ListView.separated(
-              padding: EdgeInsets.zero,
-              itemCount: 10,
-              itemBuilder: ((context, index) {
-                return const BlogPostWidget();
-              }),
-              separatorBuilder: ((context, index) {
-                return const Divider();
-              }), ),
+          child: DropdownButton(
+            dropdownColor: Theme.of(context).colorScheme.primary,
+            padding:const  EdgeInsets.symmetric(horizontal: kSP20x),
+            underline: const SizedBox.shrink(),
+            isExpanded: true,
+            value: _selectedValue,
+            items: items.map((e) {
+             return  DropdownMenuItem(value: e,child: Text(e));
+            }).toList(), 
+            onChanged: _selectCallBack,
+            ),
+          
+             ),
+              ),
+              Expanded(
+                child: ListView.separated(
+                  padding: EdgeInsets.zero,
+                  itemCount: 10,
+                  itemBuilder: ((context, index) {
+                    return const BlogPostWidget();
+                  }),
+                  separatorBuilder: ((context, index) {
+                    return const Divider();
+                  }), ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+       ),
+     );
+    
   }
 }
 
