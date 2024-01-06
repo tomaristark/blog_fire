@@ -1,10 +1,10 @@
-import 'package:blog_fire/resource/dimens.dart';
-import 'package:blog_fire/resource/string.dart';
+import 'package:blog_fire/core/dimens.dart';
+import 'package:blog_fire/core/string.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-import '../resource/enums.dart';
+import '../../../../../core/enums.dart';
 
 
 class SettingScreen extends StatelessWidget {

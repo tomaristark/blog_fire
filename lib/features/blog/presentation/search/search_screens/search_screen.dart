@@ -1,9 +1,9 @@
-import 'package:blog_fire/resource/dimens.dart';
-import 'package:blog_fire/resource/string.dart';
+import 'package:blog_fire/core/dimens.dart';
+import 'package:blog_fire/core/string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:blog_fire/widgets/blog_post_widget.dart';
-import 'package:blog_fire/widgets/profile_widget.dart';
+import 'package:blog_fire/features/blog/presentation/widgets/blog_post_widget.dart';
+import 'package:blog_fire/features/blog/presentation/profile/widgets/profile_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

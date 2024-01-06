@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:blog_fire/resource/dimens.dart';
-import 'package:blog_fire/resource/static_list.dart';
-import 'package:blog_fire/resource/string.dart';
+import 'package:blog_fire/core/dimens.dart';
+import 'package:blog_fire/core/static_list.dart';
+import 'package:blog_fire/core/string.dart';
 import 'package:flutter/material.dart';
 
-import 'package:blog_fire/widgets/reading_list_widget.dart';
+import 'package:blog_fire/features/blog/presentation/save_blogs/widgets/reading_list_widget.dart';
 
 class SaveBlogsScreen extends StatelessWidget {
   const SaveBlogsScreen({super.key});

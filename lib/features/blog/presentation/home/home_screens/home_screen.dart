@@ -1,10 +1,10 @@
 
 
-import 'package:blog_fire/resource/dimens.dart';
-import 'package:blog_fire/resource/string.dart';
+import 'package:blog_fire/core/dimens.dart';
+import 'package:blog_fire/core/string.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_fire/static_list/static_list.dart';
-import 'package:blog_fire/widgets/blog_post_widget.dart';
+import 'package:blog_fire/features/blog/presentation/widgets/blog_post_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

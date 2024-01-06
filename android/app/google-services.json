@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "941039710349",
+    "project_id": "blog-fire-1f3d7",
+    "storage_bucket": "blog-fire-1f3d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941039710349:android:16b37cc44246a752d932c4",
+        "android_client_info": {
+          "package_name": "com.example.blog_fire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEZu2kg-UbDWQGCW6dRx_wcSXy7wD05yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,14 +1,20 @@
-import 'package:blog_fire/resource/theme.dart';
+import 'package:blog_fire/firebase_options.dart';
+import 'package:blog_fire/core/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:blog_fire/screens/profile_screen.dart';
-import 'package:blog_fire/screens/save_blogs_screen.dart';
-import 'package:blog_fire/screens/search_screen.dart';
+import 'package:blog_fire/features/blog/presentation/profile/profile_screen/profile_screen.dart';
+import 'package:blog_fire/features/blog/presentation/save_blogs/save_blog_screens/save_blogs_screen.dart';
+import 'package:blog_fire/features/blog/presentation/search/search_screens/search_screen.dart';
 import 'package:get/get.dart';
 
 
-import 'screens/home_screen.dart';
+import 'features/blog/presentation/home/home_screens/home_screen.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(const MyApp());
 }
 
